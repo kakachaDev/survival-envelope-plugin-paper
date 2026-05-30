@@ -1,13 +1,10 @@
 package org.rtdxe.survivalEnvelope.events;
 
-import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Creeper;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
-import org.bukkit.inventory.EquipmentSlot;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.rtdxe.survivalEnvelope.config.ConfigManager;
@@ -29,9 +26,5 @@ public class MagneticCreeper implements Listener {
 
         creeper.getPersistentDataContainer().set(key, PersistentDataType.BOOLEAN, true);
         creeper.setMaxFuseTicks(100); // 5 секунд втягивания
-
-        // Кольчужный шлем парит над головой крипера — металлическая метка
-        creeper.getEquipment().setItem(EquipmentSlot.HEAD, new ItemStack(Material.CHAINMAIL_HELMET));
-        creeper.getEquipment().setHelmetDropChance(0f);
     }
 }

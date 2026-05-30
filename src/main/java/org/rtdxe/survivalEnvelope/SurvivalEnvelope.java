@@ -50,6 +50,7 @@ public class SurvivalEnvelope extends JavaPlugin {
         new MagneticCreeperTask(this);
         new AbyssalSpiderTask(this);
         new CorruptedGolemTask(this);
+        new MobParticleTask(this);
 
         getLogger().info("SurvivalEnvelope включен!");
     }

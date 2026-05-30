@@ -1,7 +1,5 @@
 package org.rtdxe.survivalEnvelope.events;
 
-import org.bukkit.Color;
-import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Zombie;
@@ -9,8 +7,6 @@ import org.bukkit.entity.ZombieVillager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.rtdxe.survivalEnvelope.config.ConfigManager;
@@ -35,12 +31,5 @@ public class StonebackZombie implements Listener {
 
         var kb = zombie.getAttribute(Attribute.KNOCKBACK_RESISTANCE);
         if (kb != null) kb.setBaseValue(1.0);
-
-        ItemStack chest = new ItemStack(Material.LEATHER_CHESTPLATE);
-        LeatherArmorMeta meta = (LeatherArmorMeta) chest.getItemMeta();
-        meta.setColor(Color.fromRGB(100, 100, 100));
-        chest.setItemMeta(meta);
-        zombie.getEquipment().setChestplate(chest);
-        zombie.getEquipment().setChestplateDropChance(0f);
     }
 }
