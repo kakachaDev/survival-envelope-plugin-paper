@@ -1,6 +1,7 @@
 package org.rtdxe.survivalEnvelope.tasks;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Particle;
@@ -19,11 +20,15 @@ public class MobParticleTask {
         NamespacedKey necroKey      = new NamespacedKey(plugin, "necromancer");
         NamespacedKey packKey       = new NamespacedKey(plugin, "pack_leader");
         NamespacedKey siegeKey      = new NamespacedKey(plugin, "siege_zombie");
+        NamespacedKey ragingKey     = new NamespacedKey(plugin, "raging");
         // Skeleton variants
         NamespacedKey mirrorKey     = new NamespacedKey(plugin, "mirror_skeleton");
         NamespacedKey boneburstKey  = new NamespacedKey(plugin, "boneburst_skeleton");
+        NamespacedKey bombKey       = new NamespacedKey(plugin, "bomb_skeleton");
+        NamespacedKey fireSkeletonKey = new NamespacedKey(plugin, "fire_skeleton");
         // Creeper
         NamespacedKey magneticKey   = new NamespacedKey(plugin, "magnetic_creeper");
+        NamespacedKey miniKey       = new NamespacedKey(plugin, "mini_creeper");
         // Spider
         NamespacedKey abyssalKey    = new NamespacedKey(plugin, "abyssal_spider");
         NamespacedKey swarmKey      = new NamespacedKey(plugin, "swarm_spider");
@@ -57,6 +62,9 @@ public class MobParticleTask {
                         } else if (pd.getOrDefault(siegeKey, pdc, false)) {
                             // Большой дым — тяжёлый осадный моб
                             world.spawnParticle(Particle.LARGE_SMOKE, loc, 2, 0.3, 0.3, 0.3, 0.01);
+                        } else if (pd.getOrDefault(ragingKey, pdc, false)) {
+                            // Красная пыль — ярость при низком HP
+                            world.spawnParticle(Particle.DUST, loc, 5, 0.3, 0.4, 0.3, 0, new Particle.DustOptions(Color.RED, 1.2f));
                         }
                     }
 
@@ -69,13 +77,25 @@ public class MobParticleTask {
                         } else if (pd.getOrDefault(boneburstKey, pdc, false)) {
                             // Оранжевые криты — взорвётся стрелами
                             world.spawnParticle(Particle.CRIT, loc, 2, 0.2, 0.3, 0.2, 0.01);
+                        } else if (pd.getOrDefault(bombKey, pdc, false)) {
+                            // Дым с тротилового шлема
+                            world.spawnParticle(Particle.LARGE_SMOKE, loc, 2, 0.2, 0.2, 0.2, 0.01);
+                        } else if (pd.getOrDefault(fireSkeletonKey, pdc, false)) {
+                            // Огонь — горящие стрелы
+                            world.spawnParticle(Particle.FLAME, loc, 3, 0.2, 0.3, 0.2, 0.02);
                         }
                     }
 
                     for (var cr : world.getEntitiesByClass(Creeper.class)) {
-                        if (!cr.getPersistentDataContainer().getOrDefault(magneticKey, pdc, false)) continue;
-                        // Электрические искры — всегда видно, интенсивнее при зарядке (обрабатывается MagneticCreeperTask)
-                        world.spawnParticle(Particle.ELECTRIC_SPARK, cr.getLocation().add(0, 0.8, 0), 2, 0.2, 0.3, 0.2, 0);
+                        var pd  = cr.getPersistentDataContainer();
+                        var loc = cr.getLocation().add(0, 0.8, 0);
+                        if (pd.getOrDefault(magneticKey, pdc, false)) {
+                            // Электрические искры — всегда видно, интенсивнее при зарядке
+                            world.spawnParticle(Particle.ELECTRIC_SPARK, loc, 2, 0.2, 0.3, 0.2, 0);
+                        } else if (pd.getOrDefault(miniKey, pdc, false)) {
+                            // Лавовые брызги — маленькая хлопушка
+                            world.spawnParticle(Particle.LAVA, cr.getLocation().add(0, 0.3, 0), 1, 0.2, 0.1, 0.2, 0);
+                        }
                     }
 
                     for (var sp : world.getEntitiesByClass(Spider.class)) {
