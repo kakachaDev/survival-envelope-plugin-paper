@@ -1,0 +1,10 @@
+name: SurvivalEnvelope
+main: org.rtdxe.survivalEnvelope.SurvivalEnvelope
+version: 1.2
+api-version: 26.1.2
+author: RTDxE
+description: >
+  Улучшает ночные опасности в Minecraft:
+  - Быстрые мобы ночью
+  - Более агрессивные зомби
+

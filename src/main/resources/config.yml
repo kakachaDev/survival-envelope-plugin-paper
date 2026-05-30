@@ -1,0 +1,24 @@
+mobBehavior:
+  zombieNightSpeed: 0.35
+  zombieDaySpeed: 0.23
+  zombieJumpChance: 0.15
+  zombieJumpOnlyNight: true
+  creeperJumpChance: 0.75
+  creeperJumpOnlyNight: false
+  spiderJumpChance: 0.15
+  spiderJumpStrength: 2.0
+  spiderJumpOnlyNight: true
+
+spawn:
+  miniCreeperChance: 0.25
+  bombSkeletonChance: 0.25
+  giantSpiderChance: 0.10
+  necromancerZombieChance: 0.06
+  swarmSpiderChance: 0.15
+  shieldSkeletonChance: 0.15
+  fireSkeletonChance: 0.15
+  packLeaderChance: 0.08
+  siegeZombieChance: 0.05
+
+player:
+  dropMainhandItemOnDamageChance: 0.15
