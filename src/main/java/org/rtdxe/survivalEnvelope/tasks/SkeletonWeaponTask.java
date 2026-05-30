@@ -42,13 +42,11 @@ public class SkeletonWeaponTask {
                         if (nearestDist <= 16 * 16) { // distanceSquared, не линейная
                             if (main.getType().toString().contains("BOW")) {
                                 eq.setItemInMainHand(sword);
-                                eq.setItemInOffHand(ItemStack.empty());
                             }
                         }
                         else {
                             if (main.getType().toString().contains("SWORD")) {
                                 eq.setItemInMainHand(bow);
-                                eq.setItemInOffHand(ItemStack.empty());
                             }
                         }
                     }

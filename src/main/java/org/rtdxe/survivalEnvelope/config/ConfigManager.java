@@ -90,9 +90,13 @@ public class ConfigManager {
         return config.getDouble("spawn.siegeZombieChance", 0.05);
     }
 
+    public double getCurseEndermanSpawnChance() {
+        return config.getDouble("spawn.curseEndermanChance", 0.10);
+    }
+
     // Player
     public double getDropMainhandItemOnDamageChance() {
-        return config.getDouble("player.dropMainhandItemOnDamageChance", 0.15);
+        return config.getDouble("player.dropMainhandItemOnDamageChance", 0.08);
     }
 
     public void saveConfig() {

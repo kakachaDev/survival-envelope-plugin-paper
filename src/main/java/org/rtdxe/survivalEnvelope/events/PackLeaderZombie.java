@@ -28,8 +28,6 @@ public class PackLeaderZombie implements Listener {
         if (Math.random() >= config.getPackLeaderSpawnChance()) return;
 
         zombie.getPersistentDataContainer().set(key, PersistentDataType.BOOLEAN, true);
-        zombie.setCustomName("§4Вожак стаи");
-        zombie.setCustomNameVisible(true);
 
         var scale = zombie.getAttribute(Attribute.SCALE);
         if (scale != null) scale.setBaseValue(1.3);

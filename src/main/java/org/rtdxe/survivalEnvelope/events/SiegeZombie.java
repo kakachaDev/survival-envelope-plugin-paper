@@ -28,8 +28,6 @@ public class SiegeZombie implements Listener {
         if (Math.random() >= config.getSiegeZombieSpawnChance()) return;
 
         zombie.getPersistentDataContainer().set(key, PersistentDataType.BOOLEAN, true);
-        zombie.setCustomName("§8Осадный зомби");
-        zombie.setCustomNameVisible(true);
 
         var scale = zombie.getAttribute(Attribute.SCALE);
         if (scale != null) scale.setBaseValue(1.4);

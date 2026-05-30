@@ -35,7 +35,5 @@ public class GiantSpider implements Listener {
         var speed = spider.getAttribute(Attribute.MOVEMENT_SPEED);
         if (speed != null) speed.setBaseValue(speed.getBaseValue() * 0.8);
 
-        spider.setCustomName("§4Гигантский паук");
-        spider.setCustomNameVisible(true);
     }
 }

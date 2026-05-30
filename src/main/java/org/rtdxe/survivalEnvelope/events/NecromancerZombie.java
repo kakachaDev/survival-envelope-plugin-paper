@@ -35,8 +35,6 @@ public class NecromancerZombie implements Listener {
         if (Math.random() >= config.getNecromancerZombieSpawnChance()) return;
 
         zombie.getPersistentDataContainer().set(necroKey, PersistentDataType.BOOLEAN, true);
-        zombie.setCustomName("§5Некромант");
-        zombie.setCustomNameVisible(true);
         zombie.getEquipment().setItem(EquipmentSlot.HEAD, ItemStack.of(Material.CARVED_PUMPKIN));
     }
 

@@ -3,6 +3,7 @@ package org.rtdxe.survivalEnvelope.events;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.entity.Skeleton;
 import org.bukkit.event.EventHandler;
@@ -35,8 +36,6 @@ public class ShieldSkeleton implements Listener {
         eq.setItemInOffHandDropChance(0f);
 
         skeleton.getPersistentDataContainer().set(key, PersistentDataType.BOOLEAN, true);
-        skeleton.setCustomName("§7Щитоносец");
-        skeleton.setCustomNameVisible(true);
     }
 
     @EventHandler
@@ -48,6 +47,9 @@ public class ShieldSkeleton implements Listener {
         Entity damager = event.getDamager();
         Entity attacker = (damager instanceof Projectile proj && proj.getShooter() instanceof Entity e) ? e : damager;
 
+        // Топор пробивает щит (vanilla-механика)
+        if (attacker instanceof Player p && p.getInventory().getItemInMainHand().getType().name().endsWith("_AXE")) return;
+
         Vector toAttacker = attacker.getLocation().toVector()
                 .subtract(skeleton.getLocation().toVector())
                 .normalize();
@@ -55,7 +57,7 @@ public class ShieldSkeleton implements Listener {
 
         // dot > 0.5 означает угол < 60°: скелет смотрит на атакующего
         if (facing.dot(toAttacker) > 0.5) {
-            event.setDamage(event.getDamage() * 0.15); // блокирует 85% урона
+            event.setDamage(event.getDamage() * 0.40); // блокирует 60% урона
         }
     }
 }

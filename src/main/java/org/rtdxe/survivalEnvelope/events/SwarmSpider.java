@@ -33,8 +33,6 @@ public class SwarmSpider implements Listener {
         if (Math.random() >= config.getSwarmSpiderSpawnChance()) return;
 
         spider.getPersistentDataContainer().set(key, PersistentDataType.BOOLEAN, true);
-        spider.setCustomName("§8Паук-матка");
-        spider.setCustomNameVisible(true);
     }
 
     @EventHandler

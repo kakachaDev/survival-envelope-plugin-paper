@@ -19,6 +19,7 @@ spawn:
   fireSkeletonChance: 0.15
   packLeaderChance: 0.08
   siegeZombieChance: 0.05
+  curseEndermanChance: 0.10
 
 player:
-  dropMainhandItemOnDamageChance: 0.15
+  dropMainhandItemOnDamageChance: 0.08

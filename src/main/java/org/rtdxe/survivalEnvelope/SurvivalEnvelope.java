@@ -37,6 +37,7 @@ public class SurvivalEnvelope extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new FireSkeleton(config, this), this);
         getServer().getPluginManager().registerEvents(new PackLeaderZombie(config, this), this);
         getServer().getPluginManager().registerEvents(new SiegeZombie(config, this), this);
+        getServer().getPluginManager().registerEvents(new CurseEnderman(config, this), this);
 
         getLogger().info("SurvivalEnvelope включен!");
     }

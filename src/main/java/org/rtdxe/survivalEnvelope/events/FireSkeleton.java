@@ -33,8 +33,6 @@ public class FireSkeleton implements Listener {
         if (Math.random() >= config.getFireSkeletonSpawnChance()) return;
 
         skeleton.getPersistentDataContainer().set(key, PersistentDataType.BOOLEAN, true);
-        skeleton.setCustomName("§6Огненный скелет");
-        skeleton.setCustomNameVisible(true);
         // Постоянный Fire Resistance — скелет не горит
         skeleton.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, Integer.MAX_VALUE, 0, false, false));
     }
@@ -59,7 +57,7 @@ public class FireSkeleton implements Listener {
         BlockFace hitFace = event.getHitBlockFace();
         if (hitBlock == null || hitFace == null) return;
 
-        if (Math.random() < 0.30) {
+        if (Math.random() < 0.10) {
             Block fireTarget = hitBlock.getRelative(hitFace);
             if (fireTarget.getType() == Material.AIR) {
                 fireTarget.setType(Material.FIRE);

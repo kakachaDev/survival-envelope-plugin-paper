@@ -30,8 +30,8 @@ public class MiniCreeper implements Listener {
         var health = creeper.getAttribute(Attribute.MAX_HEALTH);
         if (health != null) health.setBaseValue(2);
 
-        creeper.setMaxFuseTicks(10);
-        creeper.setExplosionRadius(2);
+        creeper.setMaxFuseTicks(20);
+        creeper.setExplosionRadius(1);
         creeper.setIgnited(false);
     }
 

@@ -32,14 +32,11 @@ public class DropItemOnDamage implements Listener {
         ItemStack itemInHand = player.getInventory().getItemInMainHand();
         if (itemInHand == null || itemInHand.getType() == Material.AIR) return;
 
-        // проверяем шанс
-        if (random.nextDouble() <= config.getDropMainhandItemOnDamageChance()) {
-            // выбиваем предмет
-            player.getInventory().setItemInMainHand(ItemStack.empty());
-            player.getWorld().dropItemNaturally(player.getLocation(), itemInHand);
+        // только при тяжёлых ударах (≥4 урона) и с шансом
+        if (event.getDamage() < 4.0) return;
+        if (random.nextDouble() > config.getDropMainhandItemOnDamageChance()) return;
 
-            // можно добавить сообщение игроку
-            player.sendMessage("§cМоб выбил у тебя оружие!");
-        }
+        player.getInventory().setItemInMainHand(ItemStack.empty());
+        player.getWorld().dropItemNaturally(player.getLocation(), itemInHand);
     }
 }
