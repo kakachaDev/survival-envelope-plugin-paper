@@ -4,7 +4,7 @@ A [Paper](https://papermc.io/) plugin for Minecraft **26.1.2** that makes the wo
 
 ## Requirements
 
-- Java 21+
+- Java 25+
 - Paper 26.1.2
 
 ## Build
