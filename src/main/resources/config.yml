@@ -20,6 +20,13 @@ spawn:
   packLeaderChance: 0.08
   siegeZombieChance: 0.05
   curseEndermanChance: 0.10
+  stonebackZombieChance: 0.08
+  gravediggerZombieChance: 0.06
+  mirrorSkeletonChance: 0.10
+  boneburstSkeletonChance: 0.08
+  magneticCreeperChance: 0.08
+  abyssalSpiderChance: 0.08
+  corruptedGolemChance: 0.02
 
 player:
   dropMainhandItemOnDamageChance: 0.08

@@ -24,7 +24,7 @@ public class SurvivalEnvelope extends JavaPlugin {
         new SiegeZombieTask(this, tracker);
 
         // Events — базовые
-        getServer().getPluginManager().registerEvents(new MiniCreeper(config), this);
+        getServer().getPluginManager().registerEvents(new MiniCreeper(config, this), this);
         getServer().getPluginManager().registerEvents(new BombSkeleton(config, this), this);
         getServer().getPluginManager().registerEvents(new DropItemOnDamage(config), this);
         getServer().getPluginManager().registerEvents(new GiantSpider(config), this);
@@ -38,6 +38,18 @@ public class SurvivalEnvelope extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PackLeaderZombie(config, this), this);
         getServer().getPluginManager().registerEvents(new SiegeZombie(config, this), this);
         getServer().getPluginManager().registerEvents(new CurseEnderman(config, this), this);
+        getServer().getPluginManager().registerEvents(new StonebackZombie(config, this), this);
+        getServer().getPluginManager().registerEvents(new GraveDiggerZombie(config, this), this);
+        getServer().getPluginManager().registerEvents(new MirrorSkeleton(config, this), this);
+        getServer().getPluginManager().registerEvents(new BoneburstSkeleton(config, this), this);
+        getServer().getPluginManager().registerEvents(new MagneticCreeper(config, this), this);
+        getServer().getPluginManager().registerEvents(new AbyssalSpider(config, this), this);
+        getServer().getPluginManager().registerEvents(new CorruptedGolem(config, this), this);
+
+        new GraveDiggerTask(this);
+        new MagneticCreeperTask(this);
+        new AbyssalSpiderTask(this);
+        new CorruptedGolemTask(this);
 
         getLogger().info("SurvivalEnvelope включен!");
     }

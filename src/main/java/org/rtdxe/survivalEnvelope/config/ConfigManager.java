@@ -94,6 +94,34 @@ public class ConfigManager {
         return config.getDouble("spawn.curseEndermanChance", 0.10);
     }
 
+    public double getStonebackZombieSpawnChance() {
+        return config.getDouble("spawn.stonebackZombieChance", 0.08);
+    }
+
+    public double getGraveDiggerSpawnChance() {
+        return config.getDouble("spawn.gravediggerZombieChance", 0.06);
+    }
+
+    public double getMirrorSkeletonSpawnChance() {
+        return config.getDouble("spawn.mirrorSkeletonChance", 0.10);
+    }
+
+    public double getBoneburstSkeletonSpawnChance() {
+        return config.getDouble("spawn.boneburstSkeletonChance", 0.08);
+    }
+
+    public double getMagneticCreeperSpawnChance() {
+        return config.getDouble("spawn.magneticCreeperChance", 0.08);
+    }
+
+    public double getAbyssalSpiderSpawnChance() {
+        return config.getDouble("spawn.abyssalSpiderChance", 0.08);
+    }
+
+    public double getCorruptedGolemSpawnChance() {
+        return config.getDouble("spawn.corruptedGolemChance", 0.02);
+    }
+
     // Player
     public double getDropMainhandItemOnDamageChance() {
         return config.getDouble("player.dropMainhandItemOnDamageChance", 0.08);
