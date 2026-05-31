@@ -13,16 +13,19 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class RagingZombie implements Listener {
 
-    private final NamespacedKey rageKey;    // ключ AttributeModifier
-    private final NamespacedKey ragingKey;  // PDC-метка для частиц
+    private final NamespacedKey rageKey;
+    private final NamespacedKey ragingKey;
+    private final org.rtdxe.survivalEnvelope.config.ConfigManager config;
 
-    public RagingZombie(JavaPlugin plugin) {
+    public RagingZombie(org.rtdxe.survivalEnvelope.config.ConfigManager config, JavaPlugin plugin) {
+        this.config    = config;
         this.rageKey   = new NamespacedKey(plugin, "zombie_rage_speed");
         this.ragingKey = new NamespacedKey(plugin, "raging");
     }
 
     @EventHandler
     public void onZombieDamage(EntityDamageEvent event) {
+        if (!config.isRagingZombieEnabled()) return;
         if (!(event.getEntity() instanceof Zombie zombie)) return;
         if (zombie.getPersistentDataContainer().has(ragingKey, PersistentDataType.BOOLEAN)) return;
 

@@ -19,16 +19,21 @@ public class SurvivalEnvelope extends JavaPlugin {
         // Tasks
         new ZombieBehaviorTask(config, this);
         new SpiderJumpTask(config, this);
-        new SkeletonWeaponTask(this);
+        new SkeletonWeaponTask(config, this);
         new PackLeaderTask(this);
         new SiegeZombieTask(this, tracker);
+        new GraveDiggerTask(this);
+        new MagneticCreeperTask(this);
+        new AbyssalSpiderTask(this);
+        new CorruptedGolemTask(this);
+        new MobParticleTask(this);
 
         // Events — базовые
         getServer().getPluginManager().registerEvents(new MiniCreeper(config, this), this);
         getServer().getPluginManager().registerEvents(new BombSkeleton(config, this), this);
         getServer().getPluginManager().registerEvents(new DropItemOnDamage(config), this);
         getServer().getPluginManager().registerEvents(new GiantSpider(config), this);
-        getServer().getPluginManager().registerEvents(new RagingZombie(this), this);
+        getServer().getPluginManager().registerEvents(new RagingZombie(config, this), this);
 
         // Events — новые
         getServer().getPluginManager().registerEvents(new NecromancerZombie(config, this), this);
@@ -46,17 +51,25 @@ public class SurvivalEnvelope extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new AbyssalSpider(config, this), this);
         getServer().getPluginManager().registerEvents(new CorruptedGolem(config, this), this);
 
-        new GraveDiggerTask(this);
-        new MagneticCreeperTask(this);
-        new AbyssalSpiderTask(this);
-        new CorruptedGolemTask(this);
-        new MobParticleTask(this);
+        // /se reload
+        var cmd = getCommand("se");
+        if (cmd != null) {
+            cmd.setExecutor((sender, command, label, args) -> {
+                if (args.length == 1 && args[0].equalsIgnoreCase("reload")) {
+                    reloadConfig();
+                    sender.sendMessage("§aSurvivalEnvelope: config reloaded.");
+                    return true;
+                }
+                sender.sendMessage("§cUsage: /se reload");
+                return true;
+            });
+        }
 
-        getLogger().info("SurvivalEnvelope включен!");
+        getLogger().info("SurvivalEnvelope enabled!");
     }
 
     @Override
     public void onDisable() {
-        getLogger().info("SurvivalEnvelope выключен!");
+        getLogger().info("SurvivalEnvelope disabled!");
     }
 }

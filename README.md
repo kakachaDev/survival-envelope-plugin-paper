@@ -91,40 +91,69 @@ Every variant is independent — spawn chances stack, so a zombie can be both a 
 | Portal vortex | Curse Enderman |
 | Flame + fire | Corrupted Golem |
 
+## Commands
+
+| Command | Description |
+|---------|-------------|
+| `/se reload` | Reload `config.yml` without restarting the server. All changes take effect on the next relevant event or task tick. |
+
 ## Configuration
 
-All values live in `config.yml` (auto-generated on first run):
+`config.yml` is auto-generated on first run. Every mob variant and behaviour has an `enabled` toggle — set it to `false` to disable that feature entirely without touching the chance value. Use `/se reload` after saving the file.
 
 ```yaml
 mobBehavior:
+  zombieSpeedEnabled: true
   zombieNightSpeed: 0.35
   zombieDaySpeed: 0.23
+  zombieJumpEnabled: true
   zombieJumpChance: 0.15
   zombieJumpOnlyNight: true
+  spiderJumpEnabled: true
   spiderJumpChance: 0.15
   spiderJumpStrength: 2.0
   spiderJumpOnlyNight: true
+  skeletonWeaponSwitchEnabled: true
+  ragingZombieEnabled: true
 
 spawn:
+  miniCreeperEnabled: true
   miniCreeperChance: 0.25
+  bombSkeletonEnabled: true
   bombSkeletonChance: 0.25
+  giantSpiderEnabled: true
   giantSpiderChance: 0.10
+  necromancerZombieEnabled: true
   necromancerZombieChance: 0.06
+  swarmSpiderEnabled: true
   swarmSpiderChance: 0.15
+  shieldSkeletonEnabled: true
   shieldSkeletonChance: 0.15
+  fireSkeletonEnabled: true
   fireSkeletonChance: 0.15
+  packLeaderEnabled: true
   packLeaderChance: 0.08
+  siegeZombieEnabled: true
   siegeZombieChance: 0.05
+  curseEndermanEnabled: true
   curseEndermanChance: 0.10
+  stonebackZombieEnabled: true
   stonebackZombieChance: 0.08
+  gravediggerZombieEnabled: true
   gravediggerZombieChance: 0.06
+  mirrorSkeletonEnabled: true
   mirrorSkeletonChance: 0.10
+  boneburstSkeletonEnabled: true
   boneburstSkeletonChance: 0.08
+  magneticCreeperEnabled: true
   magneticCreeperChance: 0.08
+  abyssalSpiderEnabled: true
   abyssalSpiderChance: 0.08
+  corruptedGolemEnabled: true
   corruptedGolemChance: 0.02
 
 player:
+  itemKnockoutEnabled: true
   dropMainhandItemOnDamageChance: 0.08
 ```
 

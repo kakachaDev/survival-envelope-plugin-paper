@@ -6,3 +6,8 @@ author: RTDxE
 description: >
   Enhances world danger through unique mob variants and aggressive behaviour overhauls.
 
+commands:
+  se:
+    description: SurvivalEnvelope admin commands
+    usage: /se reload
+

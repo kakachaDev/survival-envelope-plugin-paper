@@ -23,12 +23,14 @@ public class ZombieBehaviorTask {
                     boolean isNight = time >= 13000 && time <= 23000;
 
                     world.getEntitiesByClass(Zombie.class).forEach(zombie -> {
-                        // Скорость применяется всегда (и днём, и ночью)
-                        AttributeInstance speed = zombie.getAttribute(Attribute.MOVEMENT_SPEED);
-                        if (speed != null) {
-                            speed.setBaseValue(isNight ? config.getZombieNightSpeed() : config.getZombieDaySpeed());
+                        if (config.isZombieSpeedEnabled()) {
+                            AttributeInstance speed = zombie.getAttribute(Attribute.MOVEMENT_SPEED);
+                            if (speed != null) {
+                                speed.setBaseValue(isNight ? config.getZombieNightSpeed() : config.getZombieDaySpeed());
+                            }
                         }
 
+                        if (!config.isZombieJumpEnabled()) return;
                         if (config.getZombieJumpOnlyNight() && !isNight) return;
 
                         Player target = world.getNearbyEntities(zombie.getLocation(), 10, 5, 10).stream()

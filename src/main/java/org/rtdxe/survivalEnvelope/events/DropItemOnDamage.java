@@ -29,6 +29,8 @@ public class DropItemOnDamage implements Listener {
         if (!(event.getDamager() instanceof LivingEntity damager)) return;
         if (damager.getType() == EntityType.PLAYER) return; // исключаем PvP, если не надо
 
+        if (!config.isItemKnockoutEnabled()) return;
+
         ItemStack itemInHand = player.getInventory().getItemInMainHand();
         if (itemInHand == null || itemInHand.getType() == Material.AIR) return;
 

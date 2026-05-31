@@ -21,6 +21,7 @@ public class SpiderJumpTask {
         new BukkitRunnable() {
             @Override
             public void run() {
+                if (!config.isSpiderJumpEnabled()) return;
                 for (var world : Bukkit.getWorlds()) {
                     long time = world.getTime();
                     boolean isNight = time >= 13000 && time <= 23000;
